@@ -6,7 +6,7 @@ const data = {
     symbols: ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-', '+', '=', '{', '[', '}', ']', '|', ':', ';', '<', ',', '>', '.', '?', '/']
 }
 
-// selctors 
+// selectors 
 const generatePwBtn = document.querySelector('.generate-pw-btn')
 const copyBtn = document.querySelector('.copy-btn')
 
@@ -22,14 +22,12 @@ const copyToClipboard = async (e) => {
     if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
       await navigator.clipboard.writeText(result.value);
     }
-
-    //add errr boundary here
+    //add error handling here
 };
 copyBtn.addEventListener('click', copyToClipboard)
 
 // programming the generate password button
 const generatePassword = (e) => {
-    e.preventDefault()
     let randomPassword = ''
     let temp = [];
 
@@ -57,6 +55,10 @@ const generatePassword = (e) => {
     
   }
 
-  generatePwBtn.addEventListener('click', generatePassword)
+  generatePwBtn.addEventListener('click', (e) => {
+      e.preventDefault()
+      generatePassword()
+    })
+
 
 

@@ -18,7 +18,8 @@
                     <div class="text-align-center">
                         <div class="text-align-center-left">
                             <label for="pw-length"> Password Length </label>
-                            <input id="pw-length" type="number" min="8"/> <br>
+                            <input id="pw-length" type="range" min="8" max="64" value="16" oninput="this.nextElementSibling.value = this.value; generatePassword()"/> 
+                            <output> 16 </output> <br>
                             <input id="lowercase" type="checkbox" checked /> 
                             <label for="lowercase"> Include lowercase letters </label> <br>
                             <input id="uppercase" type="checkbox" checked /> 
