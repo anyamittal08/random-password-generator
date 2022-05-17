@@ -31,20 +31,17 @@ const generatePassword = (e) => {
     let randomPassword = ''
     let temp = [];
 
-    if (!length.value) {
-        alert('please specify password length')
-        return 
-    }
-
-    checkboxesArr.map((checkbox) => {
+    checkboxesArr.forEach((checkbox) => {
         if (checkbox.checked) {
             temp = temp.concat(data[checkbox.id])
         }     
     })
 
     if (temp.length == 0) {
-        alert('please select at least one parameter')
+        document.getElementById('error').innerText = "Please select at least one parameter"
         return
+    } else {
+        document.getElementById('error').innerText = ''
     }
 
     for (let i=0; i < length.value; i++) {
@@ -55,10 +52,16 @@ const generatePassword = (e) => {
     
   }
 
-  generatePwBtn.addEventListener('click', (e) => {
-      e.preventDefault()
-      generatePassword()
-    })
+
+
+generatePwBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    generatePassword()
+})
+
+checkboxesArr.forEach((checkbox) => {
+    checkbox.addEventListener('click', generatePassword)
+})
 
 
 
